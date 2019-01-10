@@ -42,16 +42,21 @@ The outer list is a list of tabular rows, and the inner lists are a list of cell
 There is a [test](src/test/java/com/stibo/demo/report/service/ReportServiceTest.java) setup, which can be used to exercise
 the service call.
 
-The deliveries are split into 3 levels. The added content from the previous level is in <span style="color:red">red</span>.
+The deliveries are split into 3 levels. The added content from the previous level is in __bold__.
+
+Notice, that the method should return the content of the tables shown below. The above mentioned endpoint converts it to csv.
 
 ### Level 1
 
 Produce a report like this on the test data standard:
 
-| Category Name | Attribute Name | Description | Type |
-| --- | --- | --- | --- |
-| Root | String Value | | string |
-| Leaf | Composite Value | Composite Value Description | composite |
+    +---------------+-----------------+-----------------------------+-----------+
+    | Category Name | Attribute Name  | Description                 | Type      |
+    +---------------+-----------------+-----------------------------+-----------+
+    | Root          | String Value    |                             | string    |
+    +---------------+-----------------+-----------------------------+-----------+
+    | Leaf          | Composite Value | Composite Value Description | composite |
+    +---------------+-----------------+-----------------------------+-----------+
 
 The fields are:
 
@@ -64,40 +69,49 @@ The fields are:
 
 Produce a report like this on the test data standard:
 
-| Category Name | Attribute Name | Description | Type | <span style="color:red">Groups</span> |
-| --- | --- | --- | --- | --- |
-| Root | String Value<span style="color:red">*</span> | | string | <span style="color:red">All</span> |
-| Leaf | Composite Value | Composite Value Description | composite<span style="color:red">[]</span> | <span style="color:red">All <br>Complex</span> |
+    +---------------+-----------------+-----------------------------+-------------+---------+
+    | Category Name | Attribute Name  | Description                 | Type        | Groups  |
+    +---------------+-----------------+-----------------------------+-------------+---------+
+    | Root          | String Value*   |                             | string      | All     |
+    +---------------+-----------------+-----------------------------+-------------+---------+
+    | Leaf          | Composite Value | Composite Value Description | composite[] | All     |
+    |               |                 |                             |             | Complex |
+    +---------------+-----------------+-----------------------------+-------------+---------+
 
 The fields are:
 
 - **Category Name:** the name of the category, the attribute is linked in to.
-- **Attribute Name:** the name of the attribute, <span style="color:red">with an asterisk (*) appended, if the link to the attribute has the *optional* field set to false</span>.
+- **Attribute Name:** the name of the attribute, __with an asterisk (*) appended, if the link to the attribute has the *optional* field set to false__.
 - **Description:** the description of the attribute.
-- **Type:** the type id of the attribute, <span style="color:red">with brackets ([]) appended, if the *multiValue* field is set to true</span>.
-- <span style="color:red">**Groups:** the names of the attribute groups listed in the *groudIds* field, separated by new lines</span>.
+- **Type:** the type id of the attribute, __with brackets ([]) appended, if the *multiValue* field is set to true__.
+- **Groups:** __the names of the attribute groups listed in the *groudIds* field, separated by new lines__.
 
 ### Level 3
 
 Produce a report like this on the test data standard:
 
-| Category Name | Attribute Name | Description | Type | Groups |
-| --- | --- | --- | --- | --- |
-| Root | String Value* | | string | All |
-| Leaf | Composite Value | Composite Value Description | composite<span style="color:red">{<br>&nbsp;&nbsp;Nested Value*: integer<br>}</span>[] | All <br>Complex |
+    +---------------+-----------------+-----------------------------+--------------------------+---------+
+    | Category Name | Attribute Name  | Description                 | Type                     | Groups  |
+    +---------------+-----------------+-----------------------------+--------------------------+---------+
+    | Root          | String Value*   |                             | string                   | All     |
+    +---------------+-----------------+-----------------------------+--------------------------+---------+
+    | Leaf          | Composite Value | Composite Value Description | composite{               | All     |
+    |               |                 |                             |   Nested Value*: integer | Complex |
+    |               |                 |                             | }[]                      |         |
+    +---------------+-----------------+-----------------------------+--------------------------+---------+
 
 The fields are:
 
 - **Category Name:** the name of the category, the attribute is linked in to.
 - **Attribute Name:** the name of the attribute, with an asterisk (*) appended, if the link to the attribute has the *optional* field set to false.
 - **Description:** the description of the attribute.
-- **Type:** the type id of the attribute, with brackets ([]) appended, if the the *multiValue* field is set to true. <span style="color:red">If the *attributeLinks* field is set, then the links are recursively expanded in braces ({}) as: two spaces, attribute name with optional marker, colon (:), and expanded type, separated by new lines.</span>.
+- **Type:** the type id of the attribute, with brackets ([]) appended, if the the *multiValue* field is set to true. __If the *attributeLinks* field is set, then the links are recursively expanded in braces ({}) as: two spaces, attribute name with optional marker, colon (:), and expanded type, separated by new lines.__.
 - **Groups:** the name of the attribute groups listed in the *groudIds* field, separated by new lines.
 
 # Real Data
 
 If the application is started, it can be tested on real data as
-```
-curl -s -u key:secret http://localhost:8080/report/acme/T_SHIRTS
-```
+
+    curl -s -u key:secret http://localhost:8080/report/acme/T_SHIRTS
+
 The expected content of this call is exported to the [t-shirts.csv](doc/t-shirts.csv) file, and imported into the corresponding [T-Shirts.xslx](doc/T-Shirts.xslx) file.
