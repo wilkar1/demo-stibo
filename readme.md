@@ -2,7 +2,9 @@
 
 This is a demo project, which shows some of the data model inteactions we do in the Tagglo/PDS project.
 
-The project objective is to generate a tabular report from our data standard specification.
+The project objective is to generate a tabular report in CSV format from our data standard specification.
+
+Please fork the project to you own bitbucket, github, or other git hosting account, and give us access to the repository holding your solution.
 
 ## Data Standard
 
