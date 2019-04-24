@@ -1,6 +1,6 @@
 # Demo Project
 
-This is a demo project, which shows some of the data model inteactions we do in the Tagglo/PDS project.
+This is a demo project, which shows some of the data model interactions we do in the Tagglo/PDS project.
 
 The project objective is to generate a tabular report in CSV format from our data standard specification.
 
@@ -10,26 +10,26 @@ Please fork the project to you own bitbucket, github, or other git hosting accou
 
 We have a data standard, which describes the context for our products.
 
-The data standard has a list of *categories*, which disjointly categorizes the products.
+The data standard has a list of *categories*, which disjointly categorize the products.
 The categories are linked together in a hierarchy, where a category points to it's parent.
-E.g., for a *Clothing* category, we could have sub-categories *T-Shirts* and *Jeans*.
-There is always a single root, where the parent is not set.
+E.g., for a *Clothing* category, we could have sub-categories *T-Shirts* and *Jeans* so the resulting category hierarchy 
+would be *Clothing/T-Shirts/Jeans*. There is always a single root, where the parent is not set.
 
-The data standard also has a set of *attributes*, which describes the data on the products.
+The data standard also has a set of *attributes*, which describe the data on the products.
 The attribute has a type, which specifies the type of the value. E.g., an attribute could be a *Description* of type
 *string* and a *Price* of type *decimal*. The attributes are linked into the categories using *attribute links*.
-The available attributes for a category, is the linked in attributes for all categories from the given category to
-the root. E.g., attributes defined in the *Clothing* category are also available for products in the *T-Shirts* and
-*Jeans* categories.
+Attributes available for a given category are determined by including all attributes linked to any category in the 
+corresponding category hierarchy, all the way to the root category. E.g., attributes defined in the *Clothing* category 
+are also available for products in the *T-Shirts* and *Jeans* categories.
 
 Some attributes also link in other attributes, which means that this attribute is a composite definition. An attribute
 in a composite definition can also be a composite.
 
-The data standard also defines a set of *attribute groups*, which is an ability to scope the attributes, where
-the same attribute can be linked in to multiple attribute groups. E.g., you could have a group with all assets,
-and other groups also including some assets. It is a tool for the use to filter the attributes.
+The data standard also defines a set of *attribute groups*, which is an ability to scope the attributes by their purpose. 
+One attribute can be linked in to multiple attribute groups. E.g., you could have a group with all assets,
+and other groups also including some assets. It is a tool which helps us filter the attributes.
 
-Some data standards have close to 10,000 categories and 10,000 attributes. The available attributes in a category
+Some data standards have close to 10,000 categories and 10,000 attributes. The number of available attributes in a category
 can exceed 500.
 
 There is a trivial test data standard in the [datastandard.json](src/test/resources/datastandard.json) test resource.
