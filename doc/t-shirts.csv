@@ -1,6 +1,9 @@
 "Category Name","Attribute Name","Description","Type","Groups"
 "root","Primary image*","Primary image of the product.","asset","Assets"
+"root","Brand Logo","Image displaying logo of the product brand. Min size restriction is 100x100, max size restriction 300x300","asset","Assets"
 "root","Description*","A detailed description of the product. This will be presented to the customer on the webshop and in marketing material. No more that 300 charachers allowed.","string","Ungrouped attributes
+List view"
+"root","Multilanguage Description","Multilangual detailed description of the product.","string","Ungrouped attributes
 List view"
 "root","Production year","The year the product was produced.","integer[]","Ungrouped attributes"
 "root","Select your Home Depot Online Merchant/Category","Please select a Merchant/Category if you want a specific Merchant to review your products once submitted.","string","Ungrouped attributes"
@@ -14,6 +17,10 @@ List view"
   Material features: string[]
   Material image: asset
   Material notes: string
+  Material details: composite{
+    Description: string
+    Secondary image: asset
+  }[]
 }[]","Ungrouped attributes"
 "root","Sellable in store*","Choose whether or not the product is sellable in the physical store.","string","Payment options"
 "root","Sellable online*","Choose whether or not the product is sellable on the webshop.","string","Payment options"

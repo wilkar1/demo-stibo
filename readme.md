@@ -1,10 +1,11 @@
 # Demo Project
 
-This is a demo project, which shows some of the data model interactions we do in the Tagglo/PDS project.
+This is a demo project, which shows some of the data model interactions we do in the PDS project.
 
 The project objective is to generate a tabular report in CSV format from our data standard specification.
 
-Please fork the project to you own bitbucket, github, or other git hosting account, and give us access to the repository holding your solution.
+Please fork the project to you own bitbucket, github, or other git hosting account, and give us access to the repository 
+holding your solution - or alternatively send send us a zip-file with the solution. 
 
 ## Data Standard
 
@@ -29,8 +30,8 @@ The data standard also defines a set of *attribute groups*, which is an ability 
 One attribute can be linked in to multiple attribute groups. E.g., you could have a group with all assets,
 and other groups also including some assets. It is a tool which helps us filter the attributes.
 
-Some data standards have close to 10,000 categories and 10,000 attributes. The number of available attributes in a category
-can exceed 500.
+Some data standards have more than 10,000 categories and 10,000 attributes. The number of available attributes in a 
+category can exceed 500.
 
 There is a trivial test data standard in the [datastandard.json](src/test/resources/datastandard.json) test resource.
 The object model for the data standard is defined in the [model](src/main/java/com/stibo/demo/report/model) package.
