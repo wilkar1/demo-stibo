@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.1.8.RELEASE'
+		springBootVersion = '2.2.2.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -16,12 +16,11 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.stibo.demo'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 11
+sourceCompatibility = 13
 
 repositories {
 	mavenCentral()
 }
-
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
