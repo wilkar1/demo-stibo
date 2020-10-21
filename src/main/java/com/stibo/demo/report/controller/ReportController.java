@@ -28,7 +28,7 @@ public class ReportController {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    @RequestMapping(value = "/report/{datastandardId}/{categoryId}")
+    @RequestMapping(value = "/report/{datastandardId}/{categoryId}", produces = "text/csv")
     public String report(@PathVariable String datastandardId, @PathVariable String categoryId, @RequestHeader String authorization) throws DeploymentException {
         URI uri = URI.create("https://tagglo-dev.io/api/datastandards/v1/datastandards/" + datastandardId);
         RequestEntity<Void> request = RequestEntity.get(uri).header("Authorization", authorization).build();
