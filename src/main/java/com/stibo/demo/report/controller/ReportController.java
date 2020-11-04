@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import javax.websocket.DeploymentException;
 import java.net.URI;
 
 import static java.util.stream.Collectors.joining;
+import static java.util.stream.Stream.of;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @RestController
 public class ReportController {
-
-    private final RestTemplate restTemplate;
     private final ReportService reportService;
+    private final RestTemplate restTemplate;
 
     @Autowired
     public ReportController(ReportService reportService, RestTemplateBuilder restTemplateBuilder) {
@@ -29,12 +29,19 @@ public class ReportController {
     }
 
     @RequestMapping(value = "/report/{datastandardId}/{categoryId}", produces = "text/csv")
-    public String report(@PathVariable String datastandardId, @PathVariable String categoryId, @RequestHeader String authorization) throws DeploymentException {
-        URI uri = URI.create("https://tagglo-dev.io/api/datastandards/v1/datastandards/" + datastandardId);
-        RequestEntity<Void> request = RequestEntity.get(uri).header("Authorization", authorization).build();
-        Datastandard datastandard = restTemplate.exchange(request, Datastandard.class).getBody();
+    public String report(@PathVariable String datastandardId, @PathVariable String categoryId, @RequestHeader(required = false) String authorization)  {
+        var uri = URI.create("https://pds-dev.stibosystems.com/api/datastandards/v1/datastandards/" + datastandardId);
+        var request = RequestEntity.get(uri).header(AUTHORIZATION, authorization).build();
+        var datastandard = restTemplate.exchange(request, Datastandard.class).getBody();
         return reportService.report(datastandard, categoryId)
-            // naive CSV conversion, assuming cells do not have quotes
-            .map(row -> row.collect(joining("\",\"", "\"", "\""))).collect(joining("\n"));
+            .map(row -> row.map(this::escape).collect(joining(","))).collect(joining("\n"));
+    }
+
+    private String escape(String cell) {
+        if (of(",", "'", "\"", "\n").anyMatch(cell::contains)) {
+            return "\"" + cell.replace("\"", "\"\"") + "\"";
+        } else {
+            return cell;
+        }
     }
 }
