@@ -13,8 +13,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 
+import static java.util.Objects.isNull;
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Stream.of;
+import static org.apache.logging.log4j.util.Strings.dquote;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @RestController
@@ -29,17 +30,21 @@ public class ReportController {
     }
 
     @RequestMapping(value = "/report/{datastandardId}/{categoryId}", produces = "text/csv")
-    public String report(@PathVariable String datastandardId, @PathVariable String categoryId, @RequestHeader(required = false) String authorization)  {
+    public String report(@PathVariable String datastandardId, @PathVariable String categoryId, @RequestHeader(required=false) String authorization)  {
         var uri = URI.create("https://pds-dev.stibosystems.com/api/datastandards/v1/datastandards/" + datastandardId);
         var request = RequestEntity.get(uri).header(AUTHORIZATION, authorization).build();
         var datastandard = restTemplate.exchange(request, Datastandard.class).getBody();
         return reportService.report(datastandard, categoryId)
-            .map(row -> row.map(this::escape).collect(joining(","))).collect(joining("\n"));
+            .map(row -> row.map(c -> escape(c)).collect(joining(","))).collect(joining("\n"));
     }
 
-    private String escape(String cell) {
-        if (of(",", "'", "\"", "\n").anyMatch(cell::contains)) {
-            return "\"" + cell.replace("\"", "\"\"") + "\"";
+    private static String escape(String cell) {
+        if (isNull(cell)) {
+            return "";
+        } else if (cell.contains("\"")) {
+            return dquote(cell.replace("\"", "\"\""));
+        } else if (cell.contains(",") || cell.contains("\n")) {
+            return dquote(cell);
         } else {
             return cell;
         }

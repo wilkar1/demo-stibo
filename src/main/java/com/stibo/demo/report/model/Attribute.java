@@ -1,6 +1,5 @@
 package com.stibo.demo.report.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Attribute   {
@@ -17,6 +16,11 @@ public class Attribute   {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public Attribute withId(String Id) {
+    this.id = id;
+    return this;
   }
 
   public String getName() {
