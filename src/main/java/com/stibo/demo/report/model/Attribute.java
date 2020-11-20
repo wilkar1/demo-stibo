@@ -18,11 +18,6 @@ public class Attribute   {
     this.id = id;
   }
 
-  public Attribute withId(String Id) {
-    this.id = id;
-    return this;
-  }
-
   public String getName() {
     return name;
   }
