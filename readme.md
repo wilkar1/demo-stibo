@@ -8,6 +8,19 @@ Please fork the project to you own bitbucket, github, or other git hosting accou
 repository holding your solution - or alternatively send send us a zip-file with the solution. Please make the 
 repository unvailable again after the interview.
 
+### IDE 
+
+The assignment is also given to applicants without Java knowledge, so here is a small guide on how to get started. 
+Download and install [OpenJDK 13](https://jdk.java.net/java-se-ri/13) and 
+[IntelliJ Community Edition](https://www.jetbrains.com/idea/download/), or another IDE of your preference. 
+In IntelliJ, simply open the build file, [build.gradle](build.gradle), as a project. You might have to setup the 
+[SDK](https://www.jetbrains.com/help/idea/sdk.html#change-project-sdk). 
+
+The project can also be built, tested, and
+[run](https://spring.io/guides/gs/spring-boot/#_run_the_application) using gradle in the shell. Run the gradle
+[tasks](https://docs.gradle.org/current/userguide/command_line_interface.html#sec:listing_tasks) command to see
+the list of available tasks.
+
 ## Data Standard
 
 We have a data standard, which describes the context for our products.
