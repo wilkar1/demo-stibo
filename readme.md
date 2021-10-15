@@ -11,7 +11,7 @@ repository unvailable again after the interview.
 ### IDE 
 
 The assignment is also given to applicants without Java knowledge, so here is a small guide on how to get started. 
-Download and install [OpenJDK 13](https://jdk.java.net/java-se-ri/13) and 
+Download and install [OpenJDK 11](https://adoptium.net/releases.html?variant=openjdk11) and 
 [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/), or another IDE of your preference. 
 In IntelliJ, simply open the build file, [build.gradle](build.gradle), as a project. You might have to setup the 
 [SDK](https://www.jetbrains.com/help/idea/sdk.html#change-project-sdk). 
