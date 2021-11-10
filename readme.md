@@ -32,7 +32,7 @@ hierarchies would be *Clothing/T-Shirts* and *Clothing/Jenas*. There is always a
 set.
 
 _When viewing a category, the attributes visible are the total set of attributes linked to a given category,
-as well as any attribute linked to the parent attributes._
+as well as any attribute linked to any parent category._
 
 The data standard also has a set of *attributes*, which describe the data on the products.
 The attribute has a type, which specifies the type of the value. E.g., an attribute could be a *Description* of type
