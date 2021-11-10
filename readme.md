@@ -31,6 +31,9 @@ E.g., for a *Clothing* category, we could have sub-categories *T-Shirts* and *Je
 hierarchies would be *Clothing/T-Shirts* and *Clothing/Jenas*. There is always a single root, where the parent is not 
 set.
 
+_When viewing a category, the attributes visible are the total set of attributes linked to a given category,
+as well as any attribute linked to the parent attributes._
+
 The data standard also has a set of *attributes*, which describe the data on the products.
 The attribute has a type, which specifies the type of the value. E.g., an attribute could be a *Description* of type
 *string* and a *Price* of type *decimal*. The attributes are linked into the categories using *attribute links*.
@@ -69,6 +72,7 @@ in **bold**.
 
 ### Level 1
 
+The report should contain all attributes visible in the defined category.
 Produce a report like this on the test data standard:
 
     +---------------+-----------------+-----------------------------+-----------+
