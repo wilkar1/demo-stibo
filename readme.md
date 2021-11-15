@@ -1,6 +1,6 @@
 # Demo Project
 
-This is a demo project, which shows some of the data model interactions we do in the PDS project.
+This is a demo project, which shows some of the data model interactions we do in the PDX project.
 
 The project objective is to generate a tabular report in CSV format from our data standard specification.
 
