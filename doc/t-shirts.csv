@@ -1,7 +1,10 @@
 Category Name,Attribute Name,Description,Type,Groups
 root,Primary image*,Primary image of the product.,asset,Assets
+root,Product Title,A descriptive title used for SEO and displayed in prominent locations. No more than 200 charachters allowed.,string,"Ungrouped attributes
+List view
+Attribute filter"
 root,Brand Logo,"Image displaying logo of the product brand. Min size restriction is 100x100, max size restriction 300x300",asset,Assets
-root,Description*,A detailed description of the product. This will be presented to the customer on the webshop and in marketing material. No more that 300 charachers allowed.,string,"Ungrouped attributes
+root,Description*,A detailed description of the product. This will be presented to the customer on the webshop and in marketing material. No more than 300 charachters allowed.,string,"Ungrouped attributes
 List view
 Attribute filter"
 root,Multilanguage Description,Multilangual detailed description of the product.,string,"Ungrouped attributes

@@ -4,9 +4,7 @@ This is a demo project, which shows some of the data model interactions we do in
 
 The project objective is to generate a tabular report in CSV format from our data standard specification.
 
-Please fork the project to you own bitbucket, github, or other git hosting account, and give us access to the 
-repository holding your solution - or alternatively send send us a zip-file with the solution. Please make the 
-repository unvailable again after the interview.
+Please clone the project, implement your solution, and send us a zip-file with your answer.
 
 ### IDE 
 
