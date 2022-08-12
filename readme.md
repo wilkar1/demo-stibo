@@ -23,18 +23,18 @@ the list of available tasks.
 
 We have a data standard, which describes the context for our products.
 
+### Categories
 The data standard has a list of *categories*, which disjointly categorize the products.
 The categories are linked together in a hierarchy, where a category points to it's parent.
 E.g., for a *Clothing* category, we could have sub-categories *T-Shirts* and *Jeans* so the resulting category 
-hierarchies would be *Clothing/T-Shirts* and *Clothing/Jenas*. There is always a single root, where the parent is not 
+hierarchies would be *Clothing/T-Shirts* and *Clothing/Jeans*. There is always a single root, where the parent is not 
 set.
 
-_When viewing a category, the attributes visible are the total set of attributes linked to a given category,
-as well as any attribute linked to any parent category._
-
+### Attributes
 The data standard also has a set of *attributes*, which describe the data on the products.
 The attribute has a type, which specifies the type of the value. E.g., an attribute could be a *Description* of type
 *string* and a *Price* of type *decimal*. The attributes are linked into the categories using *attribute links*.
+
 Attributes available for a given category are determined by including all attributes linked to any category in the 
 corresponding category hierarchy, all the way to the root category. E.g., attributes defined in the *Clothing* category 
 are also available for products in the *T-Shirts* and *Jeans* categories.
@@ -42,6 +42,7 @@ are also available for products in the *T-Shirts* and *Jeans* categories.
 Some attributes also link in other attributes, which means that this attribute is a composite definition. An attribute
 in a composite definition can also be a composite.
 
+### Attribute Groups
 The data standard also defines a set of *attribute groups*, which is an ability to scope the attributes by their 
 purpose. One attribute can be linked in to multiple attribute groups. E.g., you could have a group with all assets,
 and other groups also including some assets. It is a tool which helps filtering the attributes.
@@ -64,10 +65,11 @@ csv.
 There is a [test](src/test/java/com/stibo/demo/report/service/ReportServiceTest.java) setup, which can be used to 
 exercise the service call.
 
-The deliveries are split into 3 levels. You do not have to support all levels at the same time, it is just a way of 
-splitting the assignment in parts, to set goals during the development. The added content from the previous level is 
+The deliveries are split into 3 levels of increasing complexity. **You do not have to support all levels at the same time, nor do you have to implement all levels.** The levels act as a way of 
+splitting the assignment in parts, to set goals during development. The added content from the previous level is 
 in **bold**.
 
+The tables below act as a graphical representation of what the output may look like when viewed as a table. The expectation is **not** to produce a graphical console-viewable table.
 ### Level 1
 
 The report should contain all attributes visible in the defined category.
