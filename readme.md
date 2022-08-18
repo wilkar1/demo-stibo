@@ -65,9 +65,9 @@ csv.
 There is a [test](src/test/java/com/stibo/demo/report/service/ReportServiceTest.java) setup, which can be used to 
 exercise the service call.
 
-The deliveries are split into 3 levels of increasing complexity. **You do not have to support all levels at the same time, nor do you have to implement all levels.** The levels act as a way of 
-splitting the assignment in parts, to set goals during development. The added content from the previous level is 
-in **bold**.
+The deliveries are split into 3 levels of increasing complexity. **You do not have to support all levels at the same time, nor do you have to implement all levels.** Only implement the level of complexity you feel comfortable with in the given timeframe. There are no penalties for not implementing higher levels of complexity.
+
+Fields that differ from the previous level are marked with **bold** in the level description.
 
 The tables below act as a graphical representation of what the output may look like when viewed as a table. The expectation is **not** to produce a graphical console-viewable table.
 ### Level 1
