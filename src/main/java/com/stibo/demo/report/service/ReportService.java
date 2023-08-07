@@ -75,12 +75,12 @@ public class ReportService {
             List<String> attributesOptional = attributeLinks.stream()
                     .filter(AttributeLink::optional)
                     .flatMap(attributeLink -> getAttributeStream(datastandard, attributeLink))
-                    .map(nestedAttribute -> String.format("%s: %s", nestedAttribute.name(), nestedAttribute.type()))
+                    .map(nestedAttribute -> String.format("%s: %s", nestedAttribute.name(), prepareAttributeTypeId(datastandard, nestedAttribute)))
                     .toList();
             List<String> attributesNonOptional = attributeLinks.stream()
                     .filter(not(AttributeLink::optional))
                     .flatMap(attributeLink -> getAttributeStream(datastandard, attributeLink))
-                    .map(nestedAttribute -> String.format("%s*: %s", nestedAttribute.name(), nestedAttribute.type().id()))
+                    .map(nestedAttribute -> String.format("%s*: %s", nestedAttribute.name(), prepareAttributeTypeId(datastandard, nestedAttribute)))
                     .toList();
             List<String> combinedList = Stream.of(attributesOptional, attributesNonOptional)
                     .flatMap(Collection::stream)
@@ -92,13 +92,12 @@ public class ReportService {
     }
 
     private static String prepareAttributeName(Category category, Attribute attribute) {
-        AttributeLink link = category.attributeLinks().stream()
+        Optional<AttributeLink> link = category.attributeLinks().stream()
                 .filter(attributeLink -> attributeLink.id().equals(attribute.id()))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
         String attributeName = attribute.name();
-        if (link != null) {
-            attributeName = checkOptional(link, attributeName);
+        if (link.isPresent()) {
+            attributeName = checkOptional(link.get(), attributeName);
         }
         return attributeName;
     }
